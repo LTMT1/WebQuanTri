@@ -1,7 +1,7 @@
 <?php 
   require "connect.php";
 
-  
+  // add san pham 
   
   $error ="";
   $errors ="";
