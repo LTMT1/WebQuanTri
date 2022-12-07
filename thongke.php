@@ -5,7 +5,7 @@
       $key = $_GET["search"];
       $sql = "SELECT * FROM Bill WHERE status LIKE '%$key%'";
   }else{
-        $sql = "SELECT * FROM Bill ";
+        $sql = "SELECT * FROM Bill";
   }
     $query = mysqli_query($conn,$sql);
 ?>
@@ -47,7 +47,7 @@
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+    <!-- Left navbar linkskk -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -285,7 +285,14 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-
+        <form action="" >
+          <h5>Nhập Ngày Đầu</h5>
+             <input type="date" name="tunggay" placeholder="Ngày Đầu"> 
+          <h5>Nhập Ngày Cuối</h5>
+             <input type="date" name="denngay" placeholder="Ngày Cuối">
+                <input type="submit" placeholder="">
+                  <h1>Doanh Thu:<?php echo $row['totalmoney'] ?></h1>
+                  </form>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
