@@ -15,8 +15,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>index</title>
-
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -242,7 +240,6 @@
               <i class="nav-icon fas fa-coins"></i>
               <p>
                 Thống kê
-                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
           </li>
@@ -297,10 +294,6 @@
         </div>
         <div class="card-body">
 
-
-
-
-
           <div class="row">
             <div class="col-12">
               <div class="card">
@@ -308,16 +301,7 @@
                   <h3 class="card-title">Danh sách nguời dùng</h3>
   
                   <div class="card-tools">
-                    <!--<div class="input-group input-group-sm" style="width: 150px;">-->
-                    <!--  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">-->
-  
-                    <!--  <div class="input-group-append">-->
-                    <!--    <button type="submit" class="btn btn-default">-->
-                    <!--      <i class="fas fa-search"></i>-->
-                    <!--    </button>-->
-                    <!--  </div>-->
-                    <!--</div>-->
-                    
+                
                      <form class="d-flex justify-content-end" method="get">
         <input style="width: 200px;" name="search" value="<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" class="form-control me-2" type="text" placeholder="Search Tên Người Dùng">
            <button type="submit" class="btn btn-default">
@@ -332,8 +316,7 @@
                  <table class="table">
           <thead class="card-header">
             <tr>
-              <th>ID </th>
-       
+              <th>ID Người Dùng</th>
               <th>Tên Người Dùng </th>
               <th>Ảnh </th>
               <th>Ngày Sinh </th>

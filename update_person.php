@@ -27,7 +27,7 @@
           if($user_name == "" && $birthday =="" && $phone_number == "" && $address == "" && $fileName == "" ){
                 $error = "Vui lòng nhập dữ liệu ";
             }else {
-                 echo "Error updating record:ssssssssssssssssssssssss ".$id_update;
+                 echo "Error updating record: ".$id_update;
                  $sql2 = "UPDATE Staff SET user_name = '$user_name' , image = '$linkimage' , birthday = '$birthday' , phone_number = '$phone_number',
                 address = '$address' WHERE id_staff = '$id_update'";  
                 if (mysqli_query($conn, $sql2)) {
@@ -309,7 +309,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Trang chủ > Update Staff</h1>
+            <h1>Trang chủ > Chỉnh Sửa Nhân Viên</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

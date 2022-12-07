@@ -1,6 +1,6 @@
 <?php 
   require "connect.php";
-//   error_reporting(0);
+
   
   
   $error ="";
@@ -16,22 +16,10 @@
         $fileName = $_FILES["uploadfile"]["name"];
          $tempname = $_FILES["uploadfile"]["tmp_name"];
         $targetFilePath = "./image/".$fileName;
-        // $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-        // $filename = isset($_FILES["uploadfile"]["name"]);
-        
-        // $folder = "image/" . $filename;
-        // $id_product_type = test_input($_POST['id_product_type']);
-
-                // Insert image file name into database
-            //     $sql = "insert into Product (id_product_type,product_name,image,processing_time,price,description) values ('$id_product_type','$product_name','".$fileName."','$processing_time','$price','$description')";
-            //   if ($conn->query($sql) === TRUE) {
-            //       echo "New record created successfully";
-            //     } else {
-            //       echo "Error: " . $sql . "<br>" . $conn->error;
-            //     }
+   
             $linkimage="http://chucdong.com//Deliciousrice/WebQuanTri/image/$fileName";
            if($user_name == "" && $birthday =="" && $phone_number == "" && $address == "" && $fileName == "" ){
-                $error = "Vui lòng nhập dữ liệu ";
+                $error = "Vui lòng nhập dữ liệu";
             }else {
                  $sql = "insert into Staff (user_name,image,birthday,phone_number,address) values ('$user_name','$linkimage','$birthday','$phone_number','$address')";
                  $insert =  mysqli_query($conn,$sql);
@@ -50,7 +38,6 @@
             }
      
 
-// Display status message
 }
     function test_input($data) {
   $data = trim($data);
@@ -110,7 +97,7 @@
       </li>
     </ul>
 
-    <!-- Right navbar links -->
+    <!-- Right navbar linkkkkks -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
@@ -382,7 +369,7 @@
                    <span class="focus-input100" style="color:red"><?php echo $error; ?></span>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Nơi Thường Trú</label>
+                  <label for="exampleInputPassword1">Địa Chỉ</label>
                   <input type="text" class="form-control" name="address" placeholder="">
                    <span class="focus-input100" style="color:red"><?php echo $error; ?></span>
                 </div>

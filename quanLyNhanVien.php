@@ -326,10 +326,10 @@
             <tr>
               <th>Mã nhân viên </th>
               <th>Tên nhân viên </th>
-              <th> Image </th>
-              <th>birthday</th>
-              <th>Phone</th>
-              <th>Address</th>
+              <th>Ảnh Nhân Viên</th>
+              <th>Ngày Sinh</th>
+              <th>Số Điện Thoại</th>
+              <th>Địa Chỉ</th>
               <th>Sửa</th>
               <th>Xóa</th>
             </tr>
@@ -352,7 +352,7 @@
            </tbody>
         </table>
                 </div>
-                <!-- /.card-body -->
+                
                  <a class="btn btn-primary" href="add_person.php">Thêm nhân viên mới </a>
               </div>
               <!-- /.card -->
