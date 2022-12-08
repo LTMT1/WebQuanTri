@@ -1,7 +1,7 @@
 <?php 
   require "connect.php";
 
-  // add san pham 
+  // add nhân viên
   
   $error ="";
   $errors ="";
@@ -30,7 +30,7 @@
                      echo "File upload failed, please try again.";
                   } 
                      if (move_uploaded_file($tempname,  $targetFilePath)) {
-                      echo $errors="  Image uploaded successfully!";
+                      echo $errors="Upload Thành Công!";
                   } else {
                       echo $errors = "upload không thành công ";
                   }
