@@ -2,6 +2,7 @@
 
     require "connect.php";
     
+    // update date san pham 
     $error ="";
     $errors ="";
         
@@ -377,6 +378,9 @@
                   <input type="file" name="uploadfile" placeholder="" value="<?php echo $row_up['image']; ?>"> <br>
                    <span class="focus-input100" style="color:red"><?php echo $error; ?></span>
                    <span class="focus-input100" style="color:red"><?php echo $errors; ?></span>
+                </div>
+                <div>
+                  <img src="<?php echo $row['image'] ?>" alt="">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Thời gian chế biến</label>
