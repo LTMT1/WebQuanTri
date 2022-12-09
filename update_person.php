@@ -18,16 +18,28 @@
         $birthday = test_input($_POST['birthday']);
         $phone_number = test_input($_POST['phone_number']);
         $address = test_input($_POST['address']);
-        $fileName = $_FILES["uploadfile"]["name"];
-         $tempname = $_FILES["uploadfile"]["tmp_name"];
-        $targetFilePath = "./image/".$fileName;
+              $linkssss = test_input($_POST['imagesss']);
+        if(empty($_FILES['uploadfile']['name'])){
+            $linkimage= $linkssss;
+            echo "lỏooooooooooooooooooooooooooo";
+        }else{
+           $fileName = $_FILES["uploadfile"]["name"];
+           $tempname = $_FILES["uploadfile"]["tmp_name"];
+           $targetFilePath = "./image/".$fileName;
+           $linkimage="http://chucdong.com//Deliciousrice/WebQuanTri/image/$fileName";
+              if (move_uploaded_file($tempname,  $targetFilePath)) {
+                      echo $errors="  Image uploaded successfully!";
+                  } else {
+                      echo $errors = "upload không thành công ";
+                  }
+        }
        
        
-          $linkimage="http://chucdong.com//Deliciousrice/WebQuanTri/image/$fileName";
+          
           if($user_name == "" && $birthday =="" && $phone_number == "" && $address == "" && $fileName == "" ){
                 $error = "Vui lòng nhập dữ liệu ";
             }else {
-                 echo "Error updating record: ".$id_update;
+                 echo "Error updating record:ssssssssssssssssssssssss ".$id_update;
                  $sql2 = "UPDATE Staff SET user_name = '$user_name' , image = '$linkimage' , birthday = '$birthday' , phone_number = '$phone_number',
                 address = '$address' WHERE id_staff = '$id_update'";  
                 if (mysqli_query($conn, $sql2)) {
@@ -35,11 +47,7 @@
                 } else {
                   echo "Error updating record: " . mysqli_error($conn);
                 }
-                     if (move_uploaded_file($tempname,  $targetFilePath)) {
-                      echo $errors="  Image uploaded successfully!";
-                  } else {
-                      echo $errors = "upload không thành công ";
-                  }
+                    
             
             }
     }
@@ -309,7 +317,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Trang chủ > Chỉnh Sửa Nhân Viên</h1>
+            <h1>Trang chủ > Update Staff</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -366,6 +374,10 @@
                   <input type="file" name="uploadfile" placeholder="" value="<?php echo $row_up['image']; ?>"> <br>
                    <span class="focus-input100" style="color:red"><?php echo $error; ?></span>
                    <span class="focus-input100" style="color:red"><?php echo $errors; ?></span>
+                </div>
+                 <div class="form-group">
+                  <input type="hidden" name="imagesss" class="form-control" value="<?php echo $row_up['image'] ?>"> <br>
+            
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Ngày Sinh</label>
