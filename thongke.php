@@ -1,13 +1,25 @@
 <?php 
   require "connect.php";
-  if(isset($_GET["search"]) && !empty($_GET["search"]))
-  {
-      $key = $_GET["search"];
-      $sql = "SELECT * FROM Bill WHERE status LIKE '%$key%'";
-  }else{
-        $sql = "SELECT * FROM Bill";
-  }
-    $query = mysqli_query($conn,$sql);
+   // $sql_bill = "select SUM(money) as totalmoney from Bill";
+         if($_SERVER["REQUEST_METHOD"] == "POST"){
+             $tuNgay = test_input($_POST['tunggay']);
+             $denNgay = test_input($_POST['denngay']);
+           // format date
+           //sql
+         $sql="select SUM(money) as totalmoney from Bill WHERE date_created BETWEEN CAST('$tuNgay' AS DATE) AND CAST('$denNgay' AS DATE)";
+            $query=mysqli_query($conn,$sql);
+          $data2=mysqli_fetch_assoc($query);
+            //tong tien
+            $username= $data2['totalmoney'];
+        echo "sssssssssssssssssss".$username;
+         }
+   function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +59,7 @@
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar linkskk -->
+    <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -284,22 +296,24 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
-        <form action="" >
+        <div class="card-header ">
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" action="" enctype="multipart/form-data" >
           <h5>Nhập Ngày Đầu</h5>
              <input type="date" name="tunggay" placeholder="Ngày Đầu"> 
           <h5>Nhập Ngày Cuối</h5>
              <input type="date" name="denngay" placeholder="Ngày Cuối">
                 <input type="submit" placeholder="">
-                  <h1>Doanh Thu:<?php echo $row['totalmoney'] ?></h1>
-                  </form>
+                
+             
+             </form>
+               <div class="d-flex flex-row">
+                    <h2>Doanh Thu: </h2>  <h2><?php echo $data2['totalmoney'] ?> </h2>
+                </div>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+          
           </div>
         </div>
         <div class="card-body">
@@ -313,40 +327,27 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Thống Kê</h3>
-  
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-  
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+
+               
                 </div>
+              
+                        
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
+                    <div class="card-body table-responsive p-0">
                  <table class="table">
           <thead class="card-header">
             <tr>
-              <th>ID_Bill</th>
-              <th>Date</th>
-              <th>Money</th>
+            <?php include 'thongke2.php'; ?>
         
             </tr>
           </thead>
           <tbody>
-            <?php 
-                while($row = mysqli_fetch_assoc($query)){?>
+       
               <tr>
-              <td><?php echo $row['id_bill'] ?></td>
-              <td><?php echo $row['date_created'] ?> </td>
-              <td><?php echo $row['money'] ?> </td>
-        
+              
+         
               </tr>
-               <?php } ?>
+          
             
            </tbody>
         </table>
