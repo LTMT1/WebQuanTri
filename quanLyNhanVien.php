@@ -285,14 +285,12 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-
+ <a class="btn btn-primary" href="add_person.php">Thêm nhân viên mới </a>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+           
           </div>
         </div>
         <div class="card-body">
@@ -326,10 +324,10 @@
             <tr>
               <th>Mã nhân viên </th>
               <th>Tên nhân viên </th>
-              <th>Ảnh Nhân Viên</th>
-              <th>Ngày Sinh</th>
-              <th>Số Điện Thoại</th>
-              <th>Địa Chỉ</th>
+              <th> Image </th>
+              <th>birthday</th>
+              <th>Phone</th>
+              <th>Address</th>
               <th>Sửa</th>
               <th>Xóa</th>
             </tr>
@@ -352,8 +350,8 @@
            </tbody>
         </table>
                 </div>
+                <!-- /.card-body -->
                 
-                 <a class="btn btn-primary" href="add_person.php">Thêm nhân viên mới </a>
               </div>
               <!-- /.card -->
             </div>
