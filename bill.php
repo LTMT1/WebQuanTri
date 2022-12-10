@@ -8,6 +8,7 @@
         $sql = "SELECT Bill.id_bill, Bill.date_created,Bill.status,Bill.money,Customer.user_name AS namekh,Bill.user_namenv AS namenv FROM Bill INNER JOIN Customer ON Customer.id_customer=Bill.id_customer";
   }
     $query = mysqli_query($conn,$sql);
+    // get list Bill and Duyệt 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -352,6 +353,7 @@
               <td><?php echo $row['date_created'] ?></td>
               <td><?php echo $row['status'] ?> </td>
               <td><?php echo $row['money'] ?> </td> 
+              <td  style="width: 30px;"><a href="update_bill.php&idBill=<?php echo $row['id_bill'] ?>">Duyệt</a></td>
               <tr class="expandable-body">
                       <td>
                         <div class="p-0">
