@@ -15,6 +15,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>index</title>
+
+  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -240,6 +242,7 @@
               <i class="nav-icon fas fa-coins"></i>
               <p>
                 Thống kê
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
           </li>
@@ -287,12 +290,14 @@
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+         
           </div>
         </div>
         <div class="card-body">
+
+
+
+
 
           <div class="row">
             <div class="col-12">
@@ -301,7 +306,16 @@
                   <h3 class="card-title">Danh sách nguời dùng</h3>
   
                   <div class="card-tools">
-                
+                    <!--<div class="input-group input-group-sm" style="width: 150px;">-->
+                    <!--  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">-->
+  
+                    <!--  <div class="input-group-append">-->
+                    <!--    <button type="submit" class="btn btn-default">-->
+                    <!--      <i class="fas fa-search"></i>-->
+                    <!--    </button>-->
+                    <!--  </div>-->
+                    <!--</div>-->
+                    
                      <form class="d-flex justify-content-end" method="get">
         <input style="width: 200px;" name="search" value="<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" class="form-control me-2" type="text" placeholder="Search Tên Người Dùng">
            <button type="submit" class="btn btn-default">
@@ -316,7 +330,8 @@
                  <table class="table">
           <thead class="card-header">
             <tr>
-              <th>ID Người Dùng</th>
+              <th>ID </th>
+       
               <th>Tên Người Dùng </th>
               <th>Ảnh </th>
               <th>Ngày Sinh </th>
@@ -338,8 +353,8 @@
               <td><?php echo $row['phone_number'] ?></td>
               <td><?php echo $row['email'] ?> </td>
               <td><?php echo $row['password'] ?> </td> 
-            
-              <td><a href="delete_user.php?id_customer=<?php echo $row['id_customer'] ?>" onclick="return confirm('Tài khoản này sẽ bị vô hiệu hóa?')">Vô Hiệu Hóa</td>
+                  <td  style="width: 30px;"><a href="delete_user.php?id_customer=<?php echo $row['id_customer']; ?>" >Vô Hiệu Hóa</a></td>
+         
               </tr>
                <?php } ?>
             
