@@ -3,7 +3,7 @@
   if(isset($_GET["search"]) && !empty($_GET["search"]))
   {
       $key = $_GET["search"];
-      $sql = "SELECT * FROM Staff WHERE id_cutomer LIKE '%$key%'";
+      $sql = "SELECT * FROM Staff WHERE user_name LIKE '%$key%'";
   }else{
         $sql = "SELECT * FROM Staff ";
   }
@@ -306,15 +306,22 @@
                   <h3 class="card-title">Danh sách đặt hàng</h3>
   
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <!--<div class="input-group input-group-sm" style="width: 150px;">-->
+                    <!--  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">-->
   
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                    <!--  <div class="input-group-append">-->
+                    <!--    <button type="submit" class="btn btn-default">-->
+                    <!--      <i class="fas fa-search"></i>-->
+                    <!--    </button>-->
+                    <!--  </div>-->
+                    <!--</div>-->
+                                 <form class="d-flex justify-content-end" method="get">
+        <input style="width: 200px;" name="search" value="<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" class="form-control me-2" type="text" placeholder="Search Tên Nhân Viên">
+           <button type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
-                      </div>
-                    </div>
+    
+      </form>
                   </div>
                 </div>
                 <!-- /.card-header -->
@@ -343,7 +350,7 @@
               <td><?php echo $row['phone_number'] ?> </td>
               <td><?php echo $row['address'] ?></td>
                <td  style="width: 30px;"><a href="update_person.php?id_staff=<?php echo $row['id_staff']; ?>" >Sửa</a></td>
-               <td style="width: 30px;"><a href="deletePerson.php?idStaff=<?php echo $row['id_staff']; ?>" onclick="return confirm('Sản Phẩm sẽ bị xóa khỏi danh sách?')">Xóa</a></td>
+               <td style="width: 30px;"><a href="deletePerson.php?idStaff=<?php echo $row['id_staff']; ?>" onclick="return confirm('Nhân Viên sẽ bị xóa khỏi danh sách?')">Xóa</a></td>
               </tr>
                <?php } ?>
             

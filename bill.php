@@ -3,12 +3,13 @@
   if(isset($_GET["search"]) && !empty($_GET["search"]))
   {
       $key = $_GET["search"];
-      $sql = "SELECT * FROM Bill WHERE status LIKE '%$key%'";
+      $sql = "SELECT Bill.id_customer, Customer.user_name,Bill.id_bill,Bill.user_namenv,Bill.address,Bill.date_created,Bill.status,Bill.Note,Bill.money FROM `Bill` INNER JOIN Customer ON Bill.id_customer = Customer.id_customer WHERE Customer.user_name = '$key';";
+
   }else{
-        $sql = "SELECT Bill.id_bill, Bill.date_created,Bill.status,Bill.money,Customer.user_name AS namekh,Bill.user_namenv AS namenv FROM Bill INNER JOIN Customer ON Customer.id_customer=Bill.id_customer";
+        $sql = "SELECT Bill.id_bill, Bill.date_created,Bill.status,Bill.money,Customer.user_name AS user_name,Bill.user_namenv FROM Bill INNER JOIN Customer ON Customer.id_customer=Bill.id_customer";
   }
     $query = mysqli_query($conn,$sql);
-    // get list Bill and Duyệt 
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -291,9 +292,7 @@
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+      
           </div>
         </div>
         <div class="card-body">
@@ -318,10 +317,9 @@
                     <!--    </button>-->
                     <!--  </div>-->
                     <!--</div>-->
-                    
-                     <form class="d-flex justify-content-end" method="get">
-        <input style="width: 200px;" name="search" value="<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" class="form-control me-2" type="text" placeholder="Search">
-              <button type="submit" class="btn btn-default">
+                                     <form class="d-flex justify-content-end" method="get">
+        <input style="width: 200px;" name="search" value="<?php if(isset($_GET["search"])) {echo $_GET["search"];} ?>" class="form-control me-2" type="text" placeholder="Search Tên Khách Hàng">
+           <button type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
     
@@ -339,35 +337,28 @@
               <th>Date</th>
               <th>Status</th>
               <th>Money</th>
+               <th>Note</th>
+              <th>Action</th>
+              <th>Chi Tiết</th>
             </tr>
           </thead>
-          <tbody>
+          
+          <tbody  >
 
              
                 <?php 
                 while($row = mysqli_fetch_assoc($query)){?>
               <tr data-widget="expandable-table" aria-expanded="false" >
-              <td> <i class="expandable-table-caret fas fa-caret-right fa-fw"> </i> <?php echo $row['id_bill'] ?></td>
-              <td><?php echo $row['namekh'] ?> </td>
-              <td><?php echo $row['namenv'] ?> </td>
+              <td><?php echo $row['id_bill'] ?></td>
+              <td><?php echo $row['user_name'] ?> </td>
+              <td><?php echo $row['user_namenv'] ?> </td>
               <td><?php echo $row['date_created'] ?></td>
               <td><?php echo $row['status'] ?> </td>
               <td><?php echo $row['money'] ?> </td> 
-              <td  style="width: 30px;"><a href="update_bill.php&idBill=<?php echo $row['id_bill'] ?>">Duyệt</a></td>
-              <tr class="expandable-body">
-                      <td>
-                        <div class="p-0">
-                          <table class="table table-hover">
-                            <tbody>
-                              <tr>
-                                <td>hóa đơn chi tiết ở đây </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </td>
-                    </tr>
-              </tr>
+                   <td><?php echo $row['Note'] ?> </td>
+               <td  style="width: 30px;"><a  href="update_bill.php?idBill=<?php echo $row['id_bill'] ?>" >Duyệt</a></td>
+                <td  style="width: 100px;"><a  href="update_bill.php?idBill=<?php echo $row['id_bill'] ?>" >Chi Tiết</a></td>
+   
                <?php } ?>
                     
                    
@@ -411,7 +402,9 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
 
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
