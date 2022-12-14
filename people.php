@@ -267,7 +267,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Trang chủ > Quản Lý Người Dùng</h1>
+            <h1>Quản Lý Người Dùng</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -353,7 +353,7 @@
               <td><?php echo $row['phone_number'] ?></td>
               <td><?php echo $row['email'] ?> </td>
               <td><?php echo $row['password'] ?> </td> 
-                  <td  style="width: 30px;"><a href="delete_user.php?id_customer=<?php echo $row['id_customer']; ?>" >Vô Hiệu Hóa</a></td>
+                  <td  style="width: 30px;"><a href="delete_user.php?id_customer=<?php echo $row['id_customer']; ?>" onclick="return confirm('Tài Khoản Người Dùng Đã Bị Vô Hiệu Hóa')">Vô Hiệu Hóa</a></td>
          
               </tr>
                <?php } ?>
