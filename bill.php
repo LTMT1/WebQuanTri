@@ -1,5 +1,6 @@
 <?php 
   require "connect.php";
+  // tim kiem hoa don va chi iet hoa đon 
   if(isset($_GET["search"]) && !empty($_GET["search"]))
   {
       $key = $_GET["search"];
@@ -8,7 +9,16 @@
   }else{
         $sql = "SELECT Bill.id_bill, Bill.date_created,Bill.status,Bill.money,Customer.user_name AS user_name,Bill.user_namenv FROM Bill INNER JOIN Customer ON Customer.id_customer=Bill.id_customer";
   }
-    $query = mysqli_query($conn,$sql);
+    // $query = mysqli_query($conn,$sql);
+    // if(isset($_GET["search"]) && !empty($_GET["search"]))
+    // {
+    //     $key = $_GET["search"];
+    //     $sql = "SELECT Bill.id_customer, Customer.user_name,Bill.id_bill,Bill.user_namenv,Bill.address,Bill.date_created,Bill.status,Bill.Note,Bill.money FROM `Bill` INNER JOIN Customer ON Bill.id_customer = Customer.id_customer WHERE Customer.user_name = '$key';";
+  
+    // }else{
+    //       $sql = "SELECT Bill.id_bill, Bill.date_created,Bill.status,Bill.money,Customer.user_name AS user_name,Bill.user_namenv FROM Bill INNER JOIN Customer ON Customer.id_customer=Bill.id_customer";
+    // }
+    //   $query = mysqli_query($conn,$sql);
     
 ?>
 <!DOCTYPE html>
