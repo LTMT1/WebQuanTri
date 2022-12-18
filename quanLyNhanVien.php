@@ -8,6 +8,7 @@
         $sql = "SELECT * FROM Staff ";
   }
     $query = mysqli_query($conn,$sql);
+    // tim kiếm nhân viên theo tên 
 ?>
 <!DOCTYPE html>
 <html lang="en">
