@@ -1,6 +1,6 @@
 <?php 
     require "connect.php";
-
+// xôa va tim kiem san pham 
 if(isset($_REQUEST['id']) and $_REQUEST['id']!=""){
 $id=$_GET['id'];
 $sql_favourite = "DELETE FROM Favourite WHERE id_product = '$id';";
