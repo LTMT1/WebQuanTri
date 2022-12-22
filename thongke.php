@@ -4,14 +4,16 @@
          if($_SERVER["REQUEST_METHOD"] == "POST"){
              $tuNgay = test_input($_POST['tunggay']);
              $denNgay = test_input($_POST['denngay']);
-           // format date
-           //sql
-         $sql="select SUM(money) as totalmoney from Bill WHERE date_created BETWEEN CAST('$tuNgay' AS DATE) AND CAST('$denNgay' AS DATE)";
+          // format date
+          //sql
+         $sql="select SUM(money) as totalmoney from Bill WHERE date_created BETWEEN CAST('$tuNgay' AS DATE) AND CAST('$denNgay' AS DATE) AND status ='Hoàn tất'";
             $query=mysqli_query($conn,$sql);
           $data2=mysqli_fetch_assoc($query);
             //tong tien
             $username= $data2['totalmoney'];
-        echo "sssssssssssssssssss".$username;
+          $sql_thongke = "SELECT Bill.id_customer, Customer.user_name,Bill.id_bill,Bill.user_namenv,Bill.address,Bill.date_created,Bill.status,Bill.Note,Bill.money FROM `Bill` INNER JOIN Customer ON Bill.id_customer = Customer.id_customer WHERE date_created BETWEEN CAST('$tuNgay' AS DATE) AND CAST('$denNgay' AS DATE) AND status ='Hoàn tất'";
+             $query_thongke=mysqli_query($conn,$sql_thongke);
+        
          }
    function test_input($data) {
   $data = trim($data);
@@ -333,21 +335,38 @@
               
                         
                 <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                 <table class="table">
+                 <div class="card-body table-responsive p-0">
+                  <table class="table">
           <thead class="card-header">
             <tr>
-            <?php include 'thongke2.php'; ?>
-        
+              <th >ID_Bill </th>
+              <th>Tên khách hàng</th>
+              <th>Tên nhân viên</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Money</th>
+             
+  
             </tr>
           </thead>
-          <tbody>
-       
-              <tr>
-              
-         
-              </tr>
           
+          <tbody  >
+
+             
+                <?php 
+                while($row = mysqli_fetch_assoc($query_thongke)){?>
+              <tr data-widget="expandable-table" aria-expanded="false" >
+              <td><?php echo $row['id_bill'] ?></td>
+              <td><?php echo $row['user_name'] ?> </td>
+              <td><?php echo $row['user_namenv'] ?> </td>
+              <td><?php echo $row['date_created'] ?></td>
+              <td ><?php echo $row['status']?> </td>
+              <td><?php echo $row['money'] ?> </td> 
+             
+            
+               <?php } ?>
+                    
+                   
             
            </tbody>
         </table>
